@@ -15,11 +15,11 @@ public class Sorting
 
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("Enter a non-negative number: ");
+        System.out.print("Enter a non-negative number: ");
         n1 = keyboard.nextInt();
-        System.out.println("Enter another number: ");
+        System.out.print("Enter another number: ");
         n2 = keyboard.nextInt();
-        System.out.println("Enter a last number: ");
+        System.out.print("Enter a last number: ");
         n3 = keyboard.nextInt();
 
         //When n1 is smallest 
