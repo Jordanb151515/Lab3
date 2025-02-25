@@ -7,82 +7,73 @@ import java.util.Scanner;
  * @ version v1.0
  * @ since 2/25/25
  */
+
 public class ValidDate { 
     public static void main (String[] args){
         int month, day, year;
-        //String vars for temp, output
-        String output = "";   //tells why date isn't valid
+        String output = "";   //tells why date isn't valid, has to be intialized
         String temp;
         boolean isValid = false;
 
         Scanner keyboard = new Scanner(System.in);
-        //Update delimiter to "/"
         keyboard.useDelimiter("/");
-        //create a blank output, output = "";
 
         System.out.print("Enter a date in mm/dd/yyyy format: ");
         month = keyboard.nextInt();
         day = keyboard.nextInt();
-
         temp = keyboard.nextLine().substring(1); //take rest of string starting after / , can't use nextInt because of delimiter
         year = Integer.parseInt(temp);
 
-        ////Create if-else if to look for when:
         ////Section 1, day is less than 1
         if (day < 1)
             output = "There cannot be less than 1 day in a month.";
         ////Section 2, day is larger than 31
         else if (day > 31)
             output = "There cannot be more than 31 days in any month.";
-        ////Section 3, btw 1 and 31 days, can use a switch that evaluates months with intentional bleed through
+        ////Section 3, btw 1 and 31 days,
         else{  //day is in valid range
             switch(month){
-                    ////Cases for all 31 day months
+                    //Cases for all 31 day months
                 case 1: case 3: case 5: case 7: case 8: case 10: case 12: {
-                     //fill in other cases for months with 31 days
-                    isValid = true;
-                    break;
-                }
-                ////Cases for all 30 day months
-                case 4: case 6: case 9: case 11: {
-                    if(day <=30) 
-                    isValid = true;
-                        else
-                        output = "This month only has 30 days in it.";
+                        //fill in other cases for months with 31 days
+                        isValid = true;
                         break;
                     }
-                ////This is February
+                    //Cases for all 30 day months
+                case 4: case 6: case 9: case 11: {
+                        if(day <=30) 
+                            isValid = true;
+                        else
+                            output = "This month only has 30 days in it.";
+                        break;
+                    }
+                    //February
                 case 2:
-                    //create isLeapYear flag and set to false
                     boolean isLeapYear = false;
                     if(year%400==0 || (year%4==0&&!(year%100==0)))
-                    ////Carefully look at || and && combo
-                    //update isLeapYear flag to true
-                    isLeapYear = true;
-                        if (isLeapYear){ ////use isLeapYear flag
-                            if(day <=29) 
+                        isLeapYear = true;
+                    if (isLeapYear){ 
+                        if(day <=29) 
                             isValid = true;
-                                else
-                                output = "February does not have more than 29 days during a leap year.";
-                        }
-                        else{ ////non-leap year
-                            if(day <=28) 
+                        else
+                            output = "February does not have more than 29 days during a leap year.";
+                    }
+                    else{ ////non-leap year
+                        if(day <=28) 
                             isValid = true;
-                                else
-                                output = "February does not have more than 28 days during a non-leap year.";
-                        }
+                        else
+                            output = "February does not have more than 28 days during a non-leap year.";
+                    }
                     break;
-            
-                    default:
+
+                default:
                     output = "Valid months must be between 1 and 12.";
-            }////End of switch
-        }////End of else section for multibranch if-else if
-        //// Output section using isValid flag
-        if (isValid) ////if isValid is true statement below will run
-        //Print month/day/year is a valid date.
-        System.out.println(month + "/" + day + "/" + year + " is a valid date.");
-            else
-            //Print month/day/year is not a valid date. + output
+            }
+        }
+        //// Output section 
+        if (isValid) 
+            System.out.println(month + "/" + day + "/" + year + " is a valid date.");
+        else
             System.out.println(month + "/" + day + "/" + year + " is not a valid date. " + output);
     }////end main
 }////end class

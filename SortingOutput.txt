@@ -1,0 +1,12 @@
+Enter a non-negative number: 3
+Enter another number: 2
+Enter a last number: 1
+The inputs sorted smallest to largest are: 1, 2, 3
+Enter a non-negative number: 2
+Enter another number: 3
+Enter a last number: 1
+The inputs sorted smallest to largest are: 1, 2, 3
+Enter a non-negative number: 1
+Enter another number: 3
+Enter a last number: 2
+The inputs sorted smallest to largest are: 1, 2, 3
